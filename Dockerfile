@@ -5,6 +5,7 @@ RUN echo "Europe/Athens" >  /etc/timezone
 RUN apk del tzdata
 RUN date
 RUN apk --update add \
+    libc6-compat \
     supervisor \
     git \
     curl \
@@ -16,7 +17,9 @@ RUN apk --update add \
     bash
 WORKDIR /app
 COPY ./dist/logvac /usr/local/bin/
+RUN chmod +x /usr/local/bin/logvac
 COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY ./config.json .
 EXPOSE 6360/tcp
 EXPOSE 6361/tcp
 EXPOSE 1514/udp
