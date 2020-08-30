@@ -2,11 +2,11 @@ version: '3.1'
 
 services:
   dev:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - .:/go/src/github.com/nanopack/logvac
+    image: thordin9/logvac
+    ports:
+      - "6360:6360"
+      - "6361:6361"
+      - "1514:1514/udp"
     env_file:
       - '.env'
       - '.env.secret'
