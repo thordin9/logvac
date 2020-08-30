@@ -3,7 +3,7 @@ pipeline {
     environment { 
         GOROOT=/usr/local/go
 	GOBIN=$GOROOT/bin
-        PATH=$PATH:$GOBIN
+        PATH="$PATH:$GOBIN"
     }
     stages {
         stage('Prepare') {
