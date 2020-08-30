@@ -11,7 +11,4 @@ build:
 	@go build --ldflags=$(LDFLAGS) -o $(DIST_DIR)/logvac main.go
 	
 deps:
-	@go get github.com/kardianos/govendor
-	@govendor sync
-	@go get -v github.com/mitchellh/gox
-	# @go get -t -v ./...
+	@go get -t -v ./...

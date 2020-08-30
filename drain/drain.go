@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/nanopack/logvac/config"
-	"github.com/nanopack/logvac/core"
+	"github.com/thordin9/logvac/config"
+	"github.com/thordin9/logvac/core"
 )
 
 type (
@@ -202,21 +202,6 @@ func AddDrain(d logvac.Drain) error {
 		drains["papertrail"] = pTrail
 		drainCfg["papertrail"] = d
 		config.Log.Info("3rd-party drain 'papertrail' initialized")
-	case "datadog":
-		// if it already exists, close it and create a new one
-		if _, ok := drains["datadog"]; ok {
-			drains["datadog"].Close()
-		}
-		dDog, err := NewDatadogClient(d.ID, d.AuthKey)
-		if err != nil {
-			return fmt.Errorf("Failed to create datadog client - %s", err)
-		}
-		err = dDog.Init()
-		if err != nil {
-			return fmt.Errorf("Datadog failed to initialize - %s", err)
-		}
-		drains["datadog"] = dDog
-		drainCfg["datadog"] = d
 	default:
 		return fmt.Errorf("Drain type not supported")
 	}

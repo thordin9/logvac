@@ -13,8 +13,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/nanopack/logvac/config"
-	"github.com/nanopack/logvac/core"
+	"github.com/thordin9/logvac/config"
+	"github.com/thordin9/logvac/core"
 )
 
 // GenerateHttpCollector creates and returns an http handler that can be dropped into the api.

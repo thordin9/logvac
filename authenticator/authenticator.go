@@ -7,7 +7,7 @@ import (
 	"io"
 	"net/url"
 
-	"github.com/nanopack/logvac/config"
+	"github.com/thordin9/logvac/config"
 )
 
 type (

@@ -28,9 +28,9 @@ import (
 	"github.com/jcelliott/lumber"
 	"github.com/nanobox-io/golang-nanoauth"
 
-	"github.com/nanopack/logvac/authenticator"
-	"github.com/nanopack/logvac/config"
-	"github.com/nanopack/logvac/drain"
+	"github.com/thordin9/logvac/authenticator"
+	"github.com/thordin9/logvac/config"
+	"github.com/thordin9/logvac/drain"
 )
 
 // Start starts the web server with the logvac functions
