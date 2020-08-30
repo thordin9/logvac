@@ -1,19 +1,3 @@
-// Package api handles the api routes and related funtionality.
-//
-// ADMIN ROUTES (requires X-AUTH-TOKEN)
-//
-// | Action | Route         | Description          | Payload                          | Output          |
-// |--------|---------------|----------------------|----------------------------------|-----------------|
-// | GET    | /add-token    | Adds a user token    | 'X-USER-TOKEN' Header with token | Success message |
-// | GET    | /remove-token | Removes a user token | 'X-USER-TOKEN' Header with token | Success message |
-//
-// USER ROUTES (requires X-USER-TOKEN)
-//
-// | Action | Route | Description       | Payload                          | Output          |
-// |--------|-------|-------------------|----------------------------------|-----------------|
-// | POST   | /logs | Publish a log     | 'X-USER-TOKEN' Header with token | Success message |
-// | GET    | /logs | Fetch stored logs | 'X-USER-TOKEN' Header with token | Success message |
-//
 package api
 
 import (
@@ -27,7 +11,6 @@ import (
 	"github.com/gorilla/pat"
 	"github.com/jcelliott/lumber"
 	"github.com/nanobox-io/golang-nanoauth"
-
 	"github.com/thordin9/logvac/authenticator"
 	"github.com/thordin9/logvac/config"
 	"github.com/thordin9/logvac/drain"
@@ -184,7 +167,9 @@ func GenerateArchiveEndpoint(archive drain.ArchiverDrain) http.HandlerFunc {
 			res.Write([]byte(err.Error()))
 			return
 		}
-
+		if req.Header.Get("Content-Type") == "application/json" {
+			res.Header().Add("Content-Type", "application/json")
+		}
 		res.WriteHeader(200)
 		res.Write(append(body, byte('\n')))
 	}
