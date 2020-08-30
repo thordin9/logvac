@@ -9,9 +9,9 @@ import (
 
 	"github.com/jcelliott/lumber"
 
-	"github.com/nanopack/logvac/config"
-	"github.com/nanopack/logvac/core"
-	"github.com/nanopack/logvac/drain"
+	"github.com/thordin9/logvac/config"
+	"github.com/thordin9/logvac/core"
+	"github.com/thordin9/logvac/drain"
 )
 
 func TestMain(m *testing.M) {

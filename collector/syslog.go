@@ -11,8 +11,8 @@ import (
 	"github.com/nanobox-io/golang-syslogparser/rfc3164"
 	"github.com/nanobox-io/golang-syslogparser/rfc5424"
 
-	"github.com/nanopack/logvac/config"
-	"github.com/nanopack/logvac/core"
+	"github.com/thordin9/logvac/config"
+	"github.com/thordin9/logvac/core"
 )
 
 type (

@@ -14,12 +14,12 @@ import (
 
 	"github.com/jcelliott/lumber"
 
-	"github.com/nanopack/logvac/api"
-	"github.com/nanopack/logvac/authenticator"
-	"github.com/nanopack/logvac/collector"
-	"github.com/nanopack/logvac/config"
-	"github.com/nanopack/logvac/core"
-	"github.com/nanopack/logvac/drain"
+	"github.com/thordin9/logvac/api"
+	"github.com/thordin9/logvac/authenticator"
+	"github.com/thordin9/logvac/collector"
+	"github.com/thordin9/logvac/config"
+	"github.com/thordin9/logvac/core"
+	"github.com/thordin9/logvac/drain"
 )
 
 func TestMain(m *testing.M) {

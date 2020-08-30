@@ -4,7 +4,7 @@ package collector
 import (
 	"net/http"
 
-	"github.com/nanopack/logvac/config"
+	"github.com/thordin9/logvac/config"
 )
 
 var (
