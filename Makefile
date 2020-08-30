@@ -8,8 +8,10 @@ TIME=$$(date -Iseconds -u)
 LDFLAGS="-s -w -X main.buildDate=$(DATE) -X main.buildTime=$(TIME)"
 
 build:
-	@go build --ldflags=$(LDFLAGS) -o $(DIST_DIR)/logvac main.go
+	@go build -v --ldflags=$(LDFLAGS) -o $(DIST_DIR)/logvac main.go
 
+test:
+	@go test -v
 deps:
 	@go get -t -v ./...
 
