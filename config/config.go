@@ -13,7 +13,7 @@ import (
 var (
 	// collectors
 	ListenHttp = "127.0.0.1:6360" // address the api and http log collectors listen on
-	ListenUdp  = "127.0.0.1:514"  // address the udp log collector listens on
+	ListenUdp  = "127.0.0.1:1514"  // address the udp log collector listens on
 	ListenTcp  = "127.0.0.1:6361" // address the tcp log collector listens on
 
 	// drains

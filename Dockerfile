@@ -1,25 +1,23 @@
-FROM golang:1.10
-
-RUN apt-get update && \
-    apt-get install -y \
-      # build tools, for compiling
-      build-essential \
-      # install curl to fetch dev things
-      curl \
-      # we'll need git for fetching golang deps
-      git \
-      # we need aws-cli to publish
-      awscli
-
-# install dep (not using it yet, but probably will switch to it)
-RUN curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-
-# setup the app dir/working directory
-RUN mkdir -p /go/src/github.com/nanopack/logvac
-WORKDIR /go/src/github.com/nanopack/logvac
-
-# copy the source
-COPY . .
-
-# fetch deps
-RUN make deps
+FROM alpine:3.8
+RUN apk --update add tzdata ca-certificates
+RUN cp /usr/share/zoneinfo/Europe/Athens /etc/localtime
+RUN echo "Europe/Athens" >  /etc/timezone
+RUN apk del tzdata
+RUN date
+RUN apk --update add \
+    supervisor \
+    git \
+    curl \
+    unzip \
+    nano \
+    wget \
+    gzip \
+    zlib \
+    bash
+WORKDIR /app
+COPY ./dist/logvac /usr/local/bin/
+COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+EXPOSE 6360/tcp
+EXPOSE 6361/tcp
+EXPOSE 1514/udp
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf","-j","/tmp/supervisord.pid"]
