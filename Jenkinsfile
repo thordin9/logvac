@@ -1,5 +1,10 @@
 pipeline {
-    agent armonly
+    agent {
+      label 'armonly'
+    }
+    triggers {
+        cron('H H * * *')
+    }
     environment { 
         GOROOT=/usr/local/go
 	GOBIN=$GOROOT/bin
