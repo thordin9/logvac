@@ -6,9 +6,9 @@ pipeline {
         cron('H H * * *')
     }
     environment { 
-        GOROOT=/usr/local/go
-	GOBIN=$GOROOT/bin
-        PATH="$PATH:$GOBIN"
+        GOROOT='/usr/local/go'
+	GOBIN='${GOROOT}/bin'
+        PATH='${PATH}:${GOBIN}'
     }
     stages {
         stage('Prepare') {
