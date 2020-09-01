@@ -1,20 +1,21 @@
 pipeline {
     agent {
-      label 'armonly'
+        label 'arm32'
     }
     triggers {
         cron('H H * * *')
     }
     environment { 
         GOROOT='/usr/local/go'
-	GOBIN='${GOROOT}/bin'
+	    GOBIN='${GOROOT}/bin'
         PATH='${PATH}:${GOBIN}'
     }
     stages {
         stage('Prepare') {
             steps {
-		checkout scm
-		sh 'make deps'
+		        checkout scm
+                sh 'echo ${GOROOT}'
+		        sh 'make deps'
             }
         }
         stage('Build') {
@@ -30,7 +31,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'make docker'
-		sh './run-docker-dev.sh'
+		        sh './run-docker-dev.sh'
             }
         }
     }

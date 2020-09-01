@@ -8,5 +8,6 @@
   "log-level": "debug",
   "token": "secret",
   "server": true,
-  "insecure": true
+  "insecure": true,
+  "cors-allow": "*"
 }

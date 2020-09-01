@@ -10,7 +10,6 @@ import (
 
 	"github.com/gorilla/pat"
 	"github.com/jcelliott/lumber"
-	"github.com/nanobox-io/golang-nanoauth"
 	"github.com/thordin9/logvac/authenticator"
 	"github.com/thordin9/logvac/config"
 	"github.com/thordin9/logvac/drain"
@@ -52,8 +51,8 @@ func Start(collector http.HandlerFunc) error {
 
 func cors(rw http.ResponseWriter, req *http.Request) {
 	rw.Header().Set("Access-Control-Allow-Origin", config.CorsAllow)
-	rw.Header().Set("Access-Control-Allow-Methods", "GET, POST")
-	rw.Header().Set("Access-Control-Allow-Headers", "X-AUTH-TOKEN, X-USER-TOKEN")
+	rw.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+	rw.Header().Set("Access-Control-Allow-Headers", "X-AUTH-TOKEN, X-USER-TOKEN, Content-Type")
 	rw.WriteHeader(200)
 	rw.Write([]byte("success!\n"))
 }
@@ -62,8 +61,8 @@ func cors(rw http.ResponseWriter, req *http.Request) {
 func handleRequest(fn http.HandlerFunc) http.HandlerFunc {
 	return func(rw http.ResponseWriter, req *http.Request) {
 		rw.Header().Set("Access-Control-Allow-Origin", config.CorsAllow)
-		rw.Header().Set("Access-Control-Allow-Methods", "GET, POST")
-		rw.Header().Set("Access-Control-Allow-Headers", "X-AUTH-TOKEN, X-USER-TOKEN")
+		rw.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		rw.Header().Set("Access-Control-Allow-Headers", "X-AUTH-TOKEN, X-USER-TOKEN, Content-Type")
 
 		fn(rw, req)
 
