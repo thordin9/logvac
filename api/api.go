@@ -10,6 +10,7 @@ import (
 
 	"github.com/gorilla/pat"
 	"github.com/jcelliott/lumber"
+	"github.com/nanobox-io/golang-nanoauth"
 	"github.com/thordin9/logvac/authenticator"
 	"github.com/thordin9/logvac/config"
 	"github.com/thordin9/logvac/drain"
